@@ -1,0 +1,21 @@
+{
+  "name": "rn-ai-agent",
+  "version": "1.0.0",
+  "description": "AI agent for React Native development — works on your behalf",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "web": "cd web && npm run dev",
+    "web:build": "cd web && npm run build"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "latest",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
