@@ -475,6 +475,79 @@ html, body {
   box-shadow: 0 8px 32px rgba(99, 102, 241, 0.45);
 }
 
+.landing-flow-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(8, 10, 20, 0.52);
+  backdrop-filter: blur(8px);
+  text-align: left;
+}
+
+.landing-flow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.landing-flow-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.landing-flow-btn.is-selected {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(129, 140, 248, 0.75);
+}
+
+.landing-flow-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.landing-flow-step {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 12px;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.landing-flow-step.is-active {
+  border-color: rgba(129, 140, 248, 0.85);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.3), 0 12px 24px rgba(99, 102, 241, 0.2);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.17), rgba(168, 85, 247, 0.1));
+}
+
+[data-theme="light"] .landing-flow-card {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+[data-theme="light"] .landing-flow-btn {
+  border-color: rgba(15, 23, 42, 0.14);
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .landing-flow-btn.is-selected {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(79, 70, 229, 0.6);
+}
+
+[data-theme="light"] .landing-flow-step {
+  border-color: rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.65);
+}
+
 @keyframes landing-headline-in {
   from {
     opacity: 0;

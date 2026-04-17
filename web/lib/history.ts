@@ -1,6 +1,6 @@
 import type { Session, ChatMessage } from './types';
 
-const KEY = 'forge_sessions';
+const KEY = 'invia_forge_sessions';
 const MAX_SESSIONS = 100;
 
 // ─── Serialise / deserialise (Date fields survive JSON roundtrip) ─────────────

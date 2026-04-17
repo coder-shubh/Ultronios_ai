@@ -4,4 +4,4 @@
  */
 export const DEFAULT_WORKSPACE_CWD =
   (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_AGENT_DEFAULT_CWD?.trim()) ||
-  '/Users/shubhamkumarsingh/Desktop/ReactProject/Ultronios/ai-agent';
+  '/Users/shubhamkumarsingh/Desktop/InviaProject';

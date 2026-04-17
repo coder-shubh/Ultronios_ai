@@ -1,6 +1,6 @@
 export type ThemeMode = 'dark' | 'light';
 
-const KEY = 'forge_theme';
+const KEY = 'invia_forge_theme';
 
 export function getStoredTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'dark';

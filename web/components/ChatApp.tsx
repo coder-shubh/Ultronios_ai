@@ -135,9 +135,16 @@ export default function ChatApp() {
       abortRef.current = ac;
 
       try {
+        const agentToken =
+          typeof process.env.NEXT_PUBLIC_AGENT_API_TOKEN === 'string'
+            ? process.env.NEXT_PUBLIC_AGENT_API_TOKEN
+            : undefined;
         const res = await fetch('/api/agent', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            ...(agentToken ? { 'x-agent-token': agentToken } : {}),
+          },
           body: JSON.stringify({ prompt, cwd }),
           signal: ac.signal,
         });
@@ -292,7 +299,7 @@ export default function ChatApp() {
     const title = sessions.find((s) => s.id === activeId)?.title ?? 'chat';
     const safe = title.replace(/[^\w\s-]/g, '').slice(0, 40) || 'chat';
     const md = messagesToMarkdown(messages, title);
-    const name = `forge-${safe}-${new Date().toISOString().slice(0, 10)}.md`;
+    const name = `inviaforge-${safe}-${new Date().toISOString().slice(0, 10)}.md`;
     downloadMarkdown(name, md);
   }, [messages, sessions, activeId]);
 

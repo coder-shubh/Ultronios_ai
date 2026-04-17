@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ThemeToggle from '@/components/ThemeToggle';
 import LandingWebGLLoader from '@/components/landing/LandingWebGLLoader';
+import HowItWorksVoice from '@/components/landing/HowItWorksVoice';
 
 /**
  * Landing: night galaxy (dark) · sunny sky + sun WebGL (light).
@@ -18,50 +20,61 @@ export default function LandingPage() {
 
       <div className="landing-vignette pointer-events-none" aria-hidden />
 
-      <header className="relative z-20 flex items-center justify-between px-6 py-5 md:px-10">
-        <span className="landing-brand text-sm font-semibold tracking-tight drop-shadow-md">
-          Ultronios
-        </span>
-        <div className="flex items-center gap-2 sm:gap-3">
+      <header className="relative z-20 flex items-center justify-between px-4 py-3 md:px-10 md:py-5 gap-2">
+        <Link
+          href="/"
+          className="landing-brand pointer-events-auto h-10 w-[150px] md:h-14 md:w-[210px] flex items-center flex-shrink-0"
+        >
+          <Image
+            src="/images/ultroniousLogo.png"
+            alt="Ultronios logo"
+            width={210}
+            height={56}
+            sizes="(max-width: 768px) 150px, 210px"
+            priority
+            className="h-10 md:h-14 w-auto drop-shadow-md"
+          />
+        </Link>
+        <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
           <Link
             href="/dashboard"
-            className="landing-nav-link text-sm font-medium px-4 py-2 rounded-full pointer-events-auto border transition-colors"
+            className="landing-nav-link hidden sm:inline-flex text-sm font-medium px-4 py-2 rounded-full pointer-events-auto border transition-colors"
           >
             Dashboard
           </Link>
           <ThemeToggle />
           <Link
             href="/chat"
-            className="landing-cta-primary text-sm font-medium px-5 py-2.5 rounded-full pointer-events-auto"
+            className="landing-cta-primary text-xs sm:text-sm font-medium px-3 sm:px-5 py-2 sm:py-2.5 rounded-full pointer-events-auto"
           >
             Open chat
           </Link>
         </div>
       </header>
 
-      <main className="relative z-20 flex flex-col items-center justify-center px-6 pb-24 pt-8 md:pt-12 min-h-[calc(100vh-88px)] text-center pointer-events-none">
-        <p className="landing-kicker text-[11px] md:text-xs tracking-[0.28em] uppercase mb-6 drop-shadow-md">
+      <main className="relative z-20 flex flex-col items-center justify-center px-4 sm:px-6 pb-8 md:pb-10 pt-2 md:pt-6 min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-88px)] text-center pointer-events-none -mt-3 md:-mt-10 overflow-y-auto md:overflow-hidden">
+        <p className="landing-kicker text-[11px] md:text-xs tracking-[0.28em] uppercase mb-4 drop-shadow-md">
           React Native · AI agent
         </p>
-        <h1 className="landing-headline max-w-5xl text-[2.35rem] sm:text-5xl md:text-6xl lg:text-[3.75rem] leading-[1.06]">
+        <h1 className="landing-headline max-w-5xl text-[1.9rem] sm:text-5xl md:text-6xl lg:text-[3.75rem] leading-[1.06]">
           <span className="landing-headline-line1 landing-headline-animate">
             Ship{' '}
             <span className="landing-headline-gradient">faster</span>
             <span className="landing-headline-plain">.</span>
           </span>
-          <span className="landing-headline-line2 landing-headline-animate-delay text-[1.35rem] sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-snug max-w-3xl mx-auto block mt-1">
+          <span className="landing-headline-line2 landing-headline-animate-delay text-[1.1rem] sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-snug max-w-3xl mx-auto block mt-1">
             Think with your{' '}
             <span className="landing-headline-em">codebase</span>
             <span className="landing-subline"> — not around it.</span>
           </span>
         </h1>
-        <p className="landing-text-body mt-8 max-w-lg text-base md:text-lg leading-relaxed drop-shadow-[0_1px_12px_rgba(0,0,0,0.35)]">
+        <p className="landing-text-body mt-3 max-w-lg text-xs sm:text-sm md:text-base leading-relaxed drop-shadow-[0_1px_12px_rgba(0,0,0,0.35)]">
           An autonomous engineer for your repo — read, edit, run, and debug in one flow.
           Open the workspace and start in plain language.
         </p>
 
-        <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 pointer-events-auto">
-          <Link href="/chat" className="landing-cta-primary text-base font-medium px-10 py-3.5 rounded-full min-w-[200px]">
+        <div className="mt-5 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 pointer-events-auto w-full sm:w-auto">
+          <Link href="/chat" className="landing-cta-primary text-sm sm:text-base font-medium px-8 sm:px-10 py-3 sm:py-3.5 rounded-full min-w-[180px] sm:min-w-[200px]">
             Try Ultronios
           </Link>
           <Link
@@ -71,9 +84,11 @@ export default function LandingPage() {
             Enter workspace →
           </Link>
         </div>
+
+        <HowItWorksVoice />
       </main>
 
-      <footer className="landing-text-footer absolute bottom-0 left-0 right-0 z-20 px-6 py-6 md:px-10 flex justify-center md:justify-between text-[11px] pointer-events-none">
+      <footer className="landing-text-footer absolute bottom-0 left-0 right-0 z-20 px-6 py-4 md:py-6 md:px-10 hidden sm:flex justify-center md:justify-between text-[11px] pointer-events-none">
         <span className="hidden md:inline drop-shadow">Local · cloud fallbacks · your keys</span>
         <span className="drop-shadow">Built for RN teams</span>
       </footer>

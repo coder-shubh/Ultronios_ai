@@ -13,7 +13,8 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 300;
 
-const API_TOKEN = process.env.ANTHROPIC_API_KEY;
+/** Optional: protect `/api/agent` — set `AGENT_API_TOKEN` and send header `x-agent-token` (not ANTHROPIC_API_KEY). */
+const AGENT_GATE_TOKEN = process.env.AGENT_API_TOKEN;
 
 // Default cwd: env override → home dir (works for any user on any machine)
 const DEFAULT_CWD = process.env.AGENT_DEFAULT_CWD ?? require('os').homedir() as string;
@@ -171,9 +172,9 @@ const CFG: Record<Intent, Cfg> = {
 };
 
 export async function POST(req: NextRequest) {
-  if (API_TOKEN) {
+  if (AGENT_GATE_TOKEN) {
     const token = req.headers.get('x-agent-token');
-    if (!token || token !== API_TOKEN) {
+    if (!token || token !== AGENT_GATE_TOKEN) {
       return new Response('Unauthorized', { status: 401 });
     }
   }

@@ -1,0 +1,15 @@
+{
+  "name": "rn-ai-agent-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Desktop shell for Ultronios (loads the web UI)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "wait-on http://127.0.0.1:3001 && electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "wait-on": "^8.0.1"
+  }
+}

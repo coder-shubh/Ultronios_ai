@@ -9,7 +9,7 @@ import {
 import type { Session } from '@/lib/types';
 import type { ProjectEntry } from '@/app/api/projects/route';
 
-const STORAGE_KEY = 'forge_workspace_root';
+const STORAGE_KEY = 'invia_workspace_root';
 
 // Deterministic color from project name
 function projectColor(name: string): string {
