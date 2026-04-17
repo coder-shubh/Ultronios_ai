@@ -1,14 +1,15 @@
 # Deploy the Next.js app from /web (Ultronios chat + /api/agent).
 #
 # In Netlify → Site settings → Build & deploy: do NOT set "Publish directory" to `web`
-# (that equals the base dir and breaks @netlify/plugin-nextjs). Leave publish empty in the
-# UI, or rely on publish below.
+# (that equals the base dir and breaks @netlify/plugin-nextjs). Leave publish empty in the UI.
+#
+# With base = "web", `publish` is resolved under that folder — use `.next`, not `web/.next`
+# (otherwise Netlify looks for web/web/.next).
 
 [build]
   base = "web"
   command = "npm run build"
-  # Repo-root-relative path; must differ from base (`web`). Overrides wrong UI publish = web.
-  publish = "web/.next"
+  publish = ".next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
