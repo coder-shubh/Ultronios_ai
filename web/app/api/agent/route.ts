@@ -102,6 +102,10 @@ import {
 } from '@/lib/fallbackLlm';
 import { sanitizeAgentOutput } from '@/lib/sanitizeAgentOutput';
 import { randomUUID } from 'crypto';
+import {
+  shouldUseAnthropicMessagesApi,
+  runAnthropicMessagesStream,
+} from '@/lib/anthropicServerlessChat';
 
 function mapOllamaToolForUi(name: string): string {
   const m: Record<string, string> = {
@@ -210,6 +214,16 @@ export async function POST(req: NextRequest) {
       send({ type: 'meta', intent, model: cfg.model });
 
       try {
+        if (shouldUseAnthropicMessagesApi()) {
+          await runAnthropicMessagesStream({
+            userPrompt,
+            systemPrompt,
+            intent,
+            send,
+          });
+          return;
+        }
+
         const options: Options = {
           permissionMode: 'acceptEdits',
           systemPrompt,
@@ -355,7 +369,7 @@ export async function POST(req: NextRequest) {
               type: 'error',
               message:
                 `${err instanceof Error ? err.message : String(err)}\n\n` +
-                'No fallback available. Install Ollama locally (ollama.com), or set GEMINI_API_KEY / GROQ_API_KEY in .env — see README.',
+                'No fallback available. Set ANTHROPIC_API_KEY on the host, or add GEMINI_API_KEY / GROQ_API_KEY — see README.',
             });
           }
         } else {
