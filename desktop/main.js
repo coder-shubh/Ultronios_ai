@@ -1,8 +1,16 @@
 const { app, BrowserWindow, shell, nativeImage } = require('electron');
 const path = require('path');
 
-/** Next dev server (see web/package.json) or production URL if you host the build. */
-const APP_URL = process.env.APP_URL || 'http://127.0.0.1:3001';
+/**
+ * Dev: local Next (see web/package.json `npm run dev`, port 3001).
+ * Packaged app: set DEFAULT_PACKAGED_URL to your deployed site, or launch with APP_URL=...
+ */
+const DEFAULT_DEV_URL = 'http://127.0.0.1:3001';
+const DEFAULT_PACKAGED_URL = 'https://your-site.com';
+
+const APP_URL =
+  process.env.APP_URL ||
+  (app.isPackaged ? DEFAULT_PACKAGED_URL : DEFAULT_DEV_URL);
 
 /** Same artwork as the web UI logo; used for window/taskbar/dock. */
 const ICON_PATH = path.join(__dirname, 'assets', 'app-icon.png');

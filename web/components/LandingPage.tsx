@@ -2,14 +2,19 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { Download } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 import LandingWebGLLoader from '@/components/landing/LandingWebGLLoader';
 import HowItWorksVoice from '@/components/landing/HowItWorksVoice';
+import { desktopDownloadAnchorProps, useDesktopDownloadHref } from '@/lib/desktopDownload';
 
 /**
  * Landing: night galaxy (dark) · sunny sky + sun WebGL (light).
  */
 export default function LandingPage() {
+  const desktopHref = useDesktopDownloadHref();
+  const desktopAnchor = desktopDownloadAnchorProps(desktopHref);
+
   return (
     <div className="landing-root relative min-h-screen w-full overflow-hidden">
       <div className="landing-bg" aria-hidden />
@@ -42,6 +47,16 @@ export default function LandingPage() {
           >
             Dashboard
           </Link>
+          <a
+            href={desktopHref}
+            {...desktopAnchor}
+            className="landing-nav-link inline-flex items-center gap-1.5 text-sm font-medium px-3 sm:px-4 py-2 rounded-full pointer-events-auto border transition-colors"
+            title="Download desktop app"
+          >
+            <Download className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
+            <span className="sm:hidden sr-only">Download</span>
+            <span className="hidden sm:inline">Download</span>
+          </a>
           <ThemeToggle />
           <Link
             href="/chat"
@@ -77,6 +92,14 @@ export default function LandingPage() {
           <Link href="/chat" className="landing-cta-primary text-sm sm:text-base font-medium px-8 sm:px-10 py-3 sm:py-3.5 rounded-full min-w-[180px] sm:min-w-[200px]">
             Try Ultronios
           </Link>
+          <a
+            href={desktopHref}
+            {...desktopAnchor}
+            className="landing-cta-secondary text-sm sm:text-base font-medium px-8 sm:px-10 py-3 sm:py-3.5 rounded-full min-w-[180px] sm:min-w-[220px]"
+          >
+            <Download className="h-[1.1em] w-[1.1em] shrink-0" aria-hidden />
+            Download desktop app
+          </a>
           <Link
             href="/chat"
             className="landing-link-subtle text-sm font-medium transition-colors py-2"

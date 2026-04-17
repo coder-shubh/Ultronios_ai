@@ -475,6 +475,33 @@ html, body {
   box-shadow: 0 8px 32px rgba(99, 102, 241, 0.45);
 }
 
+.landing-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.landing-cta-secondary:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+[data-theme="light"] .landing-cta-secondary {
+  color: #0f172a !important;
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+}
+[data-theme="light"] .landing-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
 .landing-flow-card {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 18px;
