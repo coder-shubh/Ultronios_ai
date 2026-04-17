@@ -52,6 +52,12 @@ export function isClaudeBillingFailure(text: string): boolean {
   if (t.includes('exceeded') && (t.includes('quota') || t.includes('limit'))) return true;
   if (t.includes('rate limit') || t.includes('too many requests')) return true;
   if (t.includes('api key') && (t.includes('invalid') || t.includes('expired'))) return true;
+  if (t.includes('token') && (t.includes('limit') || t.includes('exhausted') || t.includes('exceeded'))) return true;
+  if (t.includes('usage') && (t.includes('limit') || t.includes('exceeded') || t.includes('quota'))) return true;
+  if (t.includes('monthly') && (t.includes('limit') || t.includes('exceeded'))) return true;
+  if (t.includes('spend') && (t.includes('limit') || t.includes('cap'))) return true;
+  if (t.includes('overloaded') || t.includes('capacity')) return true;
+  if (t.includes('service unavailable') || t.includes('temporarily unavailable')) return true;
   return false;
 }
 
@@ -170,10 +176,18 @@ async function groqChat(
 
 const ORDER = ['ollama', 'gemini', 'groq'] as const;
 
+/** On Netlify/Vercel, Ollama at localhost never works — try Gemini / Groq (Llama on Groq) first. */
+const ORDER_SERVERLESS = ['gemini', 'groq', 'ollama'] as const;
+
 /** Env FALLBACK_ORDER=ollama,gemini,groq (subset/reorder). */
 function orderedProviders(): (typeof ORDER)[number][] {
   const raw = process.env.FALLBACK_ORDER?.trim();
-  if (!raw) return [...ORDER];
+  if (!raw) {
+    if (process.env.NETLIFY === 'true' || process.env.VERCEL) {
+      return [...ORDER_SERVERLESS];
+    }
+    return [...ORDER];
+  }
   const set = new Set(raw.split(',').map((s) => s.trim().toLowerCase()).filter(Boolean));
   const list = ORDER.filter((p) => set.has(p));
   return list.length > 0 ? list : [...ORDER];

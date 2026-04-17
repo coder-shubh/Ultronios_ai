@@ -1,4 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { isClaudeBillingFailure } from '@/lib/fallbackLlm';
 
 export type ServerlessIntent = 'read' | 'write' | 'run' | 'debug';
 
@@ -23,6 +24,21 @@ function modelForIntent(intent: ServerlessIntent): string {
   return intent === 'read' || intent === 'run' ? readRun : writeDebug;
 }
 
+function textFromMessage(msg: Anthropic.Messages.Message): string {
+  if (!Array.isArray(msg.content)) return '';
+  const parts: string[] = [];
+  for (const block of msg.content) {
+    if (block.type === 'text' && 'text' in block && typeof block.text === 'string') {
+      parts.push(block.text);
+    }
+  }
+  return parts.join('');
+}
+
+/**
+ * Streams via Anthropic Messages API; if the reply looks like quota/billing/low-usage errors,
+ * throws so /api/agent can switch to Gemini / Groq (Llama) / Ollama fallbacks — same USP as the CLI path.
+ */
 export async function runAnthropicMessagesStream(params: {
   userPrompt: string;
   systemPrompt: string;
@@ -44,13 +60,31 @@ export async function runAnthropicMessagesStream(params: {
     messages: [{ role: 'user', content: params.userPrompt }],
   });
 
+  let accum = '';
+  let billingBlocked = false;
+
   for await (const event of stream) {
     if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+      accum += event.delta.text;
+      if (isClaudeBillingFailure(accum)) {
+        billingBlocked = true;
+        continue;
+      }
       params.send({ type: 'text', content: event.delta.text });
     }
   }
 
   const final = await stream.finalMessage();
+  const fullText = textFromMessage(final);
+
+  if (
+    billingBlocked ||
+    isClaudeBillingFailure(accum) ||
+    isClaudeBillingFailure(fullText)
+  ) {
+    throw new Error('Claude unavailable (credits, quota, or usage limits).');
+  }
+
   const u = final.usage;
   params.send({
     type: 'usage',
