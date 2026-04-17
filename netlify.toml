@@ -1,0 +1,12 @@
+# Deploy the Next.js app from /web (Ultronios chat + /api/agent).
+# In Netlify UI: connect this repo, leave defaults; this file sets the monorepo base.
+
+[build]
+  base = "web"
+  command = "npm run build"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
