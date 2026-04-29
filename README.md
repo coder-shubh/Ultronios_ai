@@ -1,9 +1,76 @@
+<div align="center">
+
 # Ultronios — AI Agent for React Native
+
+### The Autonomous AI Engineer for Mobile Teams
+
+**Ship React Native apps 10× faster — at 75% lower AI cost.**
 
 > Your autonomous senior React Native engineer, powered by Claude.  
 > Built by **coder-shubh** · Runs locally · Zero cloud data storage
 
+[![Status](https://img.shields.io/badge/status-active%20development-brightgreen)]()
+[![Powered by](https://img.shields.io/badge/powered%20by-Claude%20Haiku%20%2F%20Sonnet-8b5cf6)]()
+[![Cost Reduction](https://img.shields.io/badge/token%20cost-~75%25%20lower-success)]()
+[![License](https://img.shields.io/badge/license-MIT-blue)]()
+
+**[🚀 Demo](#usage) · [💼 Invest](#-the-ask) · [📊 Traction](#-traction--metrics) · [🗺️ Roadmap](#-roadmap)**
+
+</div>
+
 Ultronios works on your behalf — opening files, running builds, writing code, debugging crashes, installing packages — anything a senior RN dev would do, fully autonomously.
+
+---
+
+## 🌍 The Vision
+
+> **Every mobile development team in the world deserves a senior engineer — on demand, 24/7, for the price of a SaaS subscription.**
+
+The global mobile app market will exceed **$613B by 2027**. Yet teams everywhere report shipping delays caused by a single bottleneck: **senior engineering talent**. Ultronios solves that — autonomously.
+
+We're not building "another AI chatbot." We're building the **autonomous engineering layer** that sits between your team and your codebase — reading files, running builds, debugging crashes, shipping features — without supervision.
+
+---
+
+## 🎯 The Problem
+
+| Pain Point | Cost to the Industry |
+|------------|----------------------|
+| Senior React Native engineers cost **$150K–$250K/yr** in the US | $40B+ annual hiring spend |
+| Existing AI coding tools waste **80% of tokens** on context they don't need | Burns billions/yr in unnecessary inference |
+| Most copilots **suggest** code; they don't **execute, build, or debug** | Engineers still do all the wiring |
+| Cloud-only AI tools leak **proprietary source code** to vendors | Enterprise security teams block adoption |
+
+> Engineering teams pay premium prices for premium models — to do tasks a smaller model could handle. **That's broken. We fix it.**
+
+---
+
+## 💡 Why Ultronios Wins
+
+| Competitor | Their Limit | Ultronios Advantage |
+|------------|-------------|---------------------|
+| GitHub Copilot | Suggestion-only; no execution | Fully autonomous (reads, writes, runs, debugs) |
+| Cursor | Premium model only; vendor lock-in | Multi-model routing → 75% cheaper, no lock-in |
+| Devin | $500/mo, cloud-only, generalist | Local-first, RN-specialized, transparent pricing |
+| ChatGPT plugins | No project context, no tools | Full project tree, git, deps, history awareness |
+
+**Our moat:** Cost-optimized routing + RN-specialized prompts + local execution + multi-provider fallback. Replicating this requires deep agent-SDK + RN tooling + ML cost engineering — not a weekend project.
+
+---
+
+## 📊 Traction & Metrics
+
+| Metric | Result |
+|--------|--------|
+| 🔥 **Token cost reduction vs. baseline** | **~75%** |
+| ⚡ **Zero-token tasks** (direct execution) | **~30% of all requests** |
+| 🛡️ **Cloud data stored** | **Zero — fully local-first** |
+| 🚀 **Models supported** | 5 (Claude Haiku/Sonnet, Ollama, Gemini, Groq) |
+| 🔧 **Tool calls per session avg** | 8–12 autonomous actions |
+| 💻 **Platforms shipped** | Web UI · CLI · Desktop |
+| 📦 **Codebase** | TypeScript (strict), Next.js 14, Agent SDK |
+
+> Built by a single founder in stealth — already production-grade, with a streaming UI, multi-session memory, and live cost analytics.
 
 ---
 
@@ -463,6 +530,90 @@ cd web && npx tsc --noEmit
 - `permissionMode: "acceptEdits"` — file edits are auto-accepted; Bash commands may prompt depending on OS permissions
 - The agent only operates within the configured `cwd`
 - For the web API route, set `AGENT_API_TOKEN` and send it as `x-agent-token` to protect `/api/agent`
+
+---
+
+## 💰 Business Model
+
+| Tier | Target | Price | What They Get |
+|------|--------|-------|---------------|
+| **Free / OSS** | Solo devs, OSS | $0 | Full CLI + web UI, BYO API key |
+| **Pro** | Indie devs | $19/mo | Hosted cloud, prompt cache, dashboards |
+| **Team** | Startups (3–20 seats) | $49/seat/mo | Shared workspaces, audit logs, SSO |
+| **Enterprise** | Mobile-first orgs | Custom | On-prem / VPC deploy, SOC2, SLAs, RBAC |
+
+> **Path to $10M ARR:** 5,000 Pro users + 200 Team accounts (avg 8 seats) + 10 Enterprise contracts.
+
+---
+
+## 🗺️ Roadmap
+
+**Now — Shipped**
+- ✅ Multi-model routing engine (Haiku / Sonnet)
+- ✅ Web UI + CLI + Desktop
+- ✅ Multi-provider fallback (Ollama / Gemini / Groq)
+- ✅ Zero-token direct execution layer
+- ✅ Streaming usage + cost analytics
+
+**Next — Growth**
+- 🔄 iOS / Android native expansion (Swift, Kotlin)
+- 🔄 Team workspaces + shared sessions
+- 🔄 Cloud-hosted Pro tier with managed API
+- 🔄 Plugin marketplace (custom tools)
+
+**Future — Scale**
+- 🔮 Web framework support (Next.js, Remix, Vue)
+- 🔮 Self-hosted Enterprise edition
+- 🔮 SOC2 Type II + HIPAA-ready deployments
+- 🌐 Ultronios Cloud (managed multi-tenant)
+- 🌐 IDE extensions (VS Code, JetBrains, Xcode)
+
+---
+
+## 💼 The Ask
+
+We're raising a **$1.5M Pre-Seed** to:
+
+| Use of Funds | Allocation |
+|--------------|-----------|
+| 🛠️ Product & Engineering (3 hires) | 55% |
+| 📈 GTM & Developer Marketing | 25% |
+| ☁️ Infrastructure & Cloud | 12% |
+| 📋 Legal, Compliance, SOC2 | 8% |
+
+**18-month runway** to hit:
+- 10,000 active developers
+- $50K MRR from Pro tier
+- 5 enterprise pilots
+- SOC2 Type I certification
+
+> **If you're a fund or angel who believes the next decade of software will be built by autonomous agents — let's talk.**
+>
+> 📧 **shubhamsingh00222.ss@gmail.com**
+
+---
+
+## 👥 Team
+
+**Founder & CEO — coder-shubh**
+*Full-stack engineer · Mobile / AI specialist · Building Ultronios in stealth.*
+
+> Looking for: technical co-founder (ML/infra), early backers, design partners.
+
+📧 **shubhamsingh00222.ss@gmail.com**
+
+---
+
+## 📞 Get Involved
+
+| You are... | Reach out for... |
+|------------|------------------|
+| 💰 **Investor / Angel / VC** | Pitch deck, financials, demo |
+| 🧪 **Mobile team / CTO** | Free design partner program |
+| 🛠️ **OSS contributor** | Issues, PRs, roadmap input |
+| 📰 **Press / Analyst** | Founder interview, briefing |
+
+📧 **shubhamsingh00222.ss@gmail.com**
 
 ---
 

@@ -1,0 +1,49 @@
+# =============================================================================
+# Ultronios — Funding Configuration
+# =============================================================================
+# This file enables the "Sponsor" button on GitHub and links to ways supporters,
+# users, investors, and the community can fund the project.
+#
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
+# =============================================================================
+
+# GitHub Sponsors username (one entry, your GitHub handle)
+github: coder-shubh
+
+# Patreon — recurring monthly support from individual backers
+patreon: # e.g. ultronios
+
+# Open Collective — transparent community funding
+open_collective: # e.g. ultronios
+
+# Ko-fi — one-time tips & coffee money
+ko_fi: # e.g. codershubh
+
+# Tidelift — enterprise OSS support contracts
+tidelift: # format: "platform-name/package-name" (e.g. npm/ultronios)
+
+# Community Bridge (LFX Crowdfunding) — Linux Foundation projects
+community_bridge: # e.g. ultronios
+
+# Liberapay — recurring donations
+liberapay: # e.g. coder-shubh
+
+# IssueHunt — bounty-based funding for issues
+issuehunt: # e.g. coder-shubh
+
+# LFX Crowdfunding (replaces community_bridge for new projects)
+lfx_crowdfunding: # e.g. ultronios
+
+# Buy Me A Coffee — one-time tips
+buy_me_a_coffee: # e.g. codershubh
+
+# Polar — modern OSS funding platform
+polar: # e.g. coder-shubh
+
+# Thanks.dev — funding for OSS dependencies
+thanks_dev: # e.g. u/gh/coder-shubh
+
+# Custom URLs (up to 4) — investor decks, contact forms, payment links
+custom:
+  - "mailto:shubhamsingh00222.ss@gmail.com?subject=Investing%20in%20Ultronios"
+  - "https://github.com/coder-shubh"
